@@ -1,0 +1,40 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+    var welcomes = (QuickType.Welcome[])ViewData["Welcome"];
+
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <button style="margin-top: 2em;">save</button>
+
+    @{
+        @if (welcomes == null)
+        {
+            <p>File Doesnt Exist</p>
+        }
+        else
+        {
+            <table boredr="2" width="100%">
+                <tr><th>Id</th><th>FirstName</th><th>LastName</th><th>Email</th><th>Gender</th><th>IpAddress</th></tr>
+                @{
+                    foreach (QuickType.Welcome welcome in welcomes)
+                    {
+                        <tr>
+                            <td>@welcome.Id</td>
+                            <td>@welcome.First_Name</td>
+                            <td>@welcome.Last_Name</td>
+                            <td>@welcome.Email</td>
+                            <td>@welcome.Gender</td>
+                            <td>@welcome.Ip_Address</td>
+                        </tr>
+                    }
+                }
+            </table>
+        }
+    }
+
+</div>
